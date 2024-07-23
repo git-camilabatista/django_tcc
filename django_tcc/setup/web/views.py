@@ -4,20 +4,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-# dict_item = {
-#     'key1': 'item 1',
-#     'key2': 'item 2',
-# }
-
-# @api_view(['GET'])
-# def show_item(request, item_id):
-#     return Response({'results': dict_item[item_id]})
-
-    # try:
-    #     return Response({'results': dict_item[item_id]})
-    # except KeyError:
-    #     raise Http404("Item not found")
-
 
 # Dados em dicionários
 users = {}
@@ -119,11 +105,3 @@ class PaidPurchasesView(APIView):
             status=status.HTTP_200_OK
         )
     
-
-
-
-# TODO 1: Definir os dados que serao salvos em cada endpoint.
-# TODO 2: Fazer o get de purchase listar apenas as compras do usuario especifico (passar user id).
-# TODO 3: Criar rota para listar todos os registros de cada view.
-
-# TODO FINAL: Criar biblioteca centralizando o que for comum a todos os frameworks (rotinas iguais).
