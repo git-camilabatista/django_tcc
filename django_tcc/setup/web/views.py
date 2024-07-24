@@ -86,12 +86,27 @@ def register_payment(request):
     serializer = PaymentSerializer(data=request.data)
     if serializer.is_valid():
         payment_data = serializer.validated_data
-        if payment_data['purchase_id'] not in purchases:
+        purchase_id = payment_data['purchase_id']
+        
+        # Verificar se o purchase_id é válido
+        if purchase_id not in purchases:
             return Response({'detail': 'Invalid or missing purchase_id'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Verificar se já existe um pagamento registrado para essa compra
+        if any(p['purchase_id'] == purchase_id for p in payments.values()):
+            return Response({'detail': 'Payment already registered for this purchase'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Registrar o novo pagamento
         payment_id = len(payments) + 1
         payments[payment_id] = payment_data
-        purchases[payment_data['purchase_id']]['paid'] = True
-        return Response(PaymentResponseSerializer({'payment_id': payment_id, 'message': 'Payment registered successfully', **payment_data}).data)
+        purchases[purchase_id]['paid'] = True
+        
+        return Response(PaymentResponseSerializer({
+            'payment_id': payment_id,
+            'message': 'Payment registered successfully',
+            **payment_data
+        }).data)
+    
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
