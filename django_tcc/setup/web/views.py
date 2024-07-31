@@ -141,3 +141,9 @@ def get_all_users(request):
 def get_paid_purchases(request):
     paid_purchases_count = sum(1 for purchase in purchases.values() if purchase['paid'])
     return Response({'paid_purchases_count': paid_purchases_count})
+
+
+@api_view(['GET'])
+def get_total_purchases(request):
+    total_purchases_count = len(purchases)
+    return Response({'total_purchases_count': total_purchases_count})
