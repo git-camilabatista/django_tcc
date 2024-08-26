@@ -1,6 +1,6 @@
 # 📌 Django REST Framework
 
-1. Clone this project into your preferred directory.
+1. Clone this project into your preferred directory:
 
 ```sh
 git clone git@github.com:git-camilabatista/django_tcc.git
