@@ -6,7 +6,7 @@
 git clone git@github.com:git-camilabatista/django_tcc.git
 ```
 
-2. Navigate to the django_tcc directory that was created:
+2. Navigate to the `django_tcc` directory that was created:
 
 ```sh
 cd django_tcc
@@ -21,7 +21,7 @@ cd django_tcc
 poetry install
 ```
 
-4. Navigate to the ./django_tcc/setup/ directory:
+4. Navigate to the `./django_tcc/setup/` directory:
 
 ```sh
 cd django_tcc/setup/
